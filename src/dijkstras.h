@@ -27,6 +27,9 @@ struct Edge {
 
 struct Graph : public vector<vector<Edge>> {
     int numVertices=0;
+    vector<int> distance;
+    vector<int> previous;
+    vector<bool> visited;
 };
 
 inline istream& operator>>(istream& in, Graph& G) {
@@ -47,6 +50,15 @@ inline void file_to_graph(const string& filename, Graph& G) {
     in.close();
 }
 
+struct Node {
+    int vertex;
+    int weight;
+    Node(int v, int w) : vertex(v), weight(w) {}
+    bool operator>(const Node& other) const {
+        return weight > other.weight;
+    }
+};
+
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous);
-vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination);
+vector<int> extract_shortest_path(const vector<int>& previous, int destination);
 void print_path(const vector<int>& v, int total);
