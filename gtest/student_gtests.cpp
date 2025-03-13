@@ -59,8 +59,9 @@ TEST(Dijkstra, ShortestPath) {
 
 // Test path extraction
 TEST(Dijkstra, ExtractShortestPath) {
+    vector<int> v;
     vector<int> previous = {-1, 0, 1, 0, 2}; // backtracking from 4 -> 2 -> 1 -> 0
-    vector<int> path = extract_shortest_path(previous, 4);
+    vector<int> path = extract_shortest_path(v, previous, 4);
 
     vector<int> expected = {0, 1, 2, 4};
     EXPECT_EQ(path, expected);

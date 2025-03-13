@@ -8,7 +8,7 @@ int main() {
     vector<int> distances = dijkstra_shortest_path(G, 0, prev);
 
     for (int d=0; d<G.numVertices; ++d) {
-        vector<int> path = extract_shortest_path(prev, d);
+        vector<int> path = extract_shortest_path(distances, prev, d);
         print_path(path, distances[d]);
     }
 
